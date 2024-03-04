@@ -1,0 +1,85 @@
+.advertising {
+    position: relative;
+    height: 700px;
+    background: #E7C6C1;
+    display: flex;
+    align-items: center;
+    .list1, .list2, .list3, .list4 {
+        width: 170px;
+        height: 120px;
+    }
+    .list1 {
+        position: absolute;
+        top: 100px;
+        left: 250px;
+    }
+    .list2 {
+        position: absolute;
+        top: 250px;
+        right: 250px;
+    }
+    .list3 {
+        position: absolute;
+        top: 380px;
+        left: 40%;
+    }
+    .list4 {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        filter: blur(5px); 
+    }
+    &__inner {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .mainTitle {
+            text-align: left;
+            h1 {
+                text-align: left;
+                font-size: 56px;
+                font-weight: 600;
+                color: #efefef;
+            }
+            p {
+                text-align: left;
+                color: #fff;
+                font-size: 22px;
+                font-weight: 400;
+                line-height: 1.1;
+                padding: 40px 0;
+                margin: 0;
+            }
+            button {
+                display: flex;
+                width: 280px;
+                height: 84px;
+                color: #414141;
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 1;
+                text-transform: uppercase;
+                text-align: center;
+                text-decoration: none;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(180deg, #FFF 0%, #E4E4E4 100%);
+                border-radius: 20px;
+                transition: 1s;
+                &:hover {
+                    // transition: 3s;
+                    background: linear-gradient(180deg, #ede8e8 0%, #e7e1e1 100%);
+                }
+            }
+        }
+
+        .oprosnik {
+            width: 550px;
+            height: 450px;
+            background: #efefef;
+            padding: 20px 0;
+            border-radius: 8px;
+        }
+    }
+}

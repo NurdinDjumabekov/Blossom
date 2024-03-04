@@ -1,0 +1,41 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: #7c7c7c;
+  font: 17px 'Gilroy', sans-serif;
+  line-height: normal;
+  text-align: center;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.noneData {
+  display: none;
+}
+.viewData {
+  display: block;
+}
+
