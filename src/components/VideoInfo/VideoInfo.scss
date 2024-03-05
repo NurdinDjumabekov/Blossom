@@ -1,0 +1,125 @@
+.videoInfo {
+    text-align: center;
+    padding: 80px 0px 30px;
+    h2 {
+        color: #414141;
+        line-height: normal;
+        font-family: "Playfair Display", serif;
+        text-align: left;
+        font-size: 40px;
+        font-weight: 400;
+        text-align: center;
+        padding: 0 0 30px 0;
+    }
+    p {
+        padding: 0 0 30px 0;
+        width: 400px;
+        margin: 0 auto;
+        color:#7c7c7c
+
+    }
+    .video {
+        width: 675px;
+        height: 390px;
+        border-radius: 10px;
+        margin: 0 auto;
+        position: relative;
+        &::before{
+            content: "";
+            background-image: url("../../assets/images/trava.png");
+            background-size: cover;
+            width: 230px;
+            height: 60px;
+            position: absolute;
+            right: -120px;
+            bottom: -24px;
+        }
+    }
+}
+
+.consultation {
+    &__inner {
+        background: #F9F9F9;
+        box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.08);
+        border-radius: 5px;
+        margin: 0 0 50px 0;
+        padding: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__text {
+        width: 290px;
+        h5 {
+            font-family: "Playfair Display", serif;
+            text-align: left;
+            font-size: 22px;
+            font-weight: 500;
+            color: #414141;
+            line-height: 25px;
+            padding: 0 0 20px 0;
+        }
+        p {
+            text-align: left;
+            font-weight: 400;
+            color: #7c7c7c;
+            line-height: 18px;
+            font-size: 15px;
+            padding: 0 0 20px 0;
+        }
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        input {
+            padding: 10px 20px;
+            background: #fff;
+            border: 1px solid #f5eaea;
+            width: 300px;
+            height: 60px;
+            border-radius: 5px;
+        } 
+        button {
+            font-size: 18px;
+            line-height: 1.1;
+            text-transform: none;
+            align-items: center;
+            padding: 0 20px;
+            width: 300px;
+            height: 54px;
+            background: #c14e77;
+            color: #fff;
+            border-radius: 5px;
+            &:hover {
+                cursor: pointer;
+                background: #b42658;
+                transform: scale(1.010);
+                transition: 0.5s;
+            }
+        }
+    }
+    .manager {
+        width: 300px;
+        > div {
+            width: 92px;
+            height: 120px;
+            margin: 0 0 20px 0;
+            // > img {
+            //     position: relative;
+            //     &::before{
+            //         content: "das";
+
+            //     }
+            // }
+        }
+        P {
+            text-align: left;
+            font-weight: 400;
+            color: #414141;
+            line-height: 18px;
+            font-size: 14px;
+            width: 220px;
+        }
+    }
+}

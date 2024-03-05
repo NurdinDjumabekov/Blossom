@@ -1,20 +1,13 @@
 import React from "react";
 import "./Menu.scss";
+import { listCategory } from "../../helpers/dataArr";
+import { useNavigate } from "react-router-dom";
 
 const Menu = () => {
-  const listCategory = [
-    { id: 1, name: "Каталог", active: true, link: "" },
-    { id: 2, name: "Розы", active: true, link: "" },
-    { id: 3, name: "Пионы", active: true, link: "" },
-    { id: 4, name: "В коробке", active: true, link: "" },
-    { id: 5, name: "Съедобные", active: true, link: "" },
-    { id: 6, name: "Клубника", active: true, link: "" },
-    { id: 7, name: "Шары", active: true, link: "" },
-    { id: 8, name: "Контакты", active: true, link: "" },
-    { id: 9, name: "Вакансии", active: true, link: "" },
-  ];
-
-  const clickCategory = (click) => {};
+  const navigate = useNavigate();
+  const clickCategory = (obj) => {
+    navigate(obj?.link);
+  };
 
   return (
     <div className="menu">
@@ -36,7 +29,9 @@ const Menu = () => {
           </div>
           <ul className="category">
             {listCategory.map((categ) => (
-              <li onClick={() => clickCategory()}>{categ?.name}</li>
+              <li onClick={() => clickCategory(categ)} key={categ?.id}>
+                {categ?.name}
+              </li>
             ))}
           </ul>
         </div>

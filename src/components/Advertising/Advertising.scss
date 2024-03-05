@@ -20,8 +20,10 @@
     }
     .list3 {
         position: absolute;
-        top: 380px;
-        left: 40%;
+        top: 400px;
+        left: 28%;
+        width: 300px;
+        height: 100px;
     }
     .list4 {
         position: absolute;
@@ -37,12 +39,14 @@
         .mainTitle {
             text-align: left;
             h1 {
+                font-family: "Playfair Display", serif;
                 text-align: left;
                 font-size: 56px;
-                font-weight: 600;
+                font-weight: 700;
                 color: #efefef;
             }
             p {
+                font-family: "EB Garamond", serif;
                 text-align: left;
                 color: #fff;
                 font-size: 22px;
@@ -50,13 +54,14 @@
                 line-height: 1.1;
                 padding: 40px 0;
                 margin: 0;
+
             }
             button {
                 display: flex;
                 width: 280px;
                 height: 84px;
                 color: #414141;
-                font-size: 20px;
+                font-size: 22px;
                 font-weight: 600;
                 line-height: 1;
                 text-transform: uppercase;
@@ -67,8 +72,8 @@
                 background: linear-gradient(180deg, #FFF 0%, #E4E4E4 100%);
                 border-radius: 20px;
                 transition: 1s;
+                font-family: "EB Garamond", serif;
                 &:hover {
-                    // transition: 3s;
                     background: linear-gradient(180deg, #ede8e8 0%, #e7e1e1 100%);
                 }
             }

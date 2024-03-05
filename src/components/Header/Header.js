@@ -4,6 +4,7 @@ import logo from "../../assets/images/LogoBlossom.png";
 import inst from "../../assets/icons/insta.svg";
 import wa from "../../assets/icons/wa.svg";
 import wa1 from "../../assets/icons/search.svg";
+import { numWebSite } from "../../helpers/dataArr";
 
 const Header = () => {
   return (
@@ -18,7 +19,7 @@ const Header = () => {
           </div>
           <div className="num">г. Бишкек</div>
           <div className="filial">
-            <p>+996(999)99-99-99</p>
+            <p>{numWebSite}</p>
           </div>
           <div className="contacts">
             <div>

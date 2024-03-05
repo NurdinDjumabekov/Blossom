@@ -2,7 +2,7 @@
     &__inner {
         padding: 30px 0;
         text-align: left;
-        button {
+        > button {
             font-size: 20px;
             line-height: 1.1;
             text-transform: none;
@@ -20,8 +20,31 @@
                 transition: 0.5s;
             }
         }
+        .priceSort {
+            background: #F9F9F9;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 20px 0 0 0;
+            border-radius: 8px;
+            &__every {
+                padding: 15px 20px;
+                background: #fff;
+                text-align: center;
+                border-radius: 8px;
+                cursor: pointer;
+                position: relative;
+            }
+            .activePrice {
+                background: #c14e77;
+                color: #fff;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            }
+        }
         .category {
-            padding: 20px 0px;
+            padding: 20px 0px 0 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -33,11 +56,25 @@
                 align-items: center;
                 gap: 7px;
                 justify-content: center;
+                cursor: pointer;
+                &:hover {
+                    background: #b42658;
+                    p {
+                        color: #fff;
+                    }
+                }
+                &:nth-child(4){
+                    img {
+                        width: 19px;
+                    }
+                }
                 img {
+                    display: block;
                     width: 24px;
                     height: 24px;
                 }
             }
         }
+       
     }
 }

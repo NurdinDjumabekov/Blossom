@@ -1,11 +1,7 @@
 import MainRoutes from "./routers/MainRoutes";
 
 function App() {
-  return (
-    <div className="mainBlock">
-      <MainRoutes />
-    </div>
-  );
+  return <MainRoutes />;
 }
 
 export default App;
