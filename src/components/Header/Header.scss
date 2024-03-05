@@ -1,69 +1,88 @@
 .header {
-    background: #f7f0eb;
-    &__inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 0px;
-        
-        .main {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            .logo {
-                width: 130px;
-                height: 40px;
-            }
-            p {
-                width: 200px; 
-                text-align: left;
-                font-size: 16px;
-                line-height: 19px;
-                color: #414141;
-            }
-        }
-        
-        .num {
-            color: #414141;
-            font-weight: 500;
-        }
+  background: #f7f0eb;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
 
-        .filial {
-            p {
-                font-size: 14px;
-                line-height: 19px;
-                color: #414141;
-            }
-        }
-        .contacts {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            > div {
-                cursor: pointer;
-                width: 35px;
-                height: 35px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 50%;
-                background: #fff;
-                &:hover {
-                    background: #e6d8cf;
-                    transition: 0.5s;
-                }
-                > img {
-                    width: 50%;
-                    height: 50%;
-                }
-            }
-        }
-        .mainInfo {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
+    .main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      .logo {
+        width: 130px;
+        height: 40px;
+        display: block;
+      }
+      p {
+        width: 200px;
+        text-align: left;
+        font-size: 16px;
+        line-height: 19px;
+        color: #414141;
+      }
     }
+
+    .num {
+      color: #414141;
+      font-weight: 500;
+    }
+
+    .filial {
+      p {
+        font-size: 14px;
+        line-height: 19px;
+        color: #414141;
+      }
+    }
+    .contacts {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      > div {
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #fff;
+        &:hover {
+          background: #e6d8cf;
+          transition: 0.5s;
+        }
+        > img {
+          width: 50%;
+          height: 50%;
+        }
+      }
+    }
+    .mainInfo {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      > a {
+        display: block;
+        width: 22px;
+        height: 22px;
+        position: relative;
+        p {
+          font-size: 11px;
+          font-weight: 500;
+          position: absolute;
+          right: -5px;
+          bottom: -10px;
+          background: #e6d8cf;
+          width: 14px;
+          height: 14px;
+          text-align: center;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
 }

@@ -1,18 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  tokenA: "",
+  tokenA: '',
+  listfavorites: [],
 };
 
 const saveDataSlice = createSlice({
-  name: "saveDataSlice",
+  name: 'saveDataSlice',
   initialState,
   reducers: {
     changeTokenA: (state, action) => {
       state.tokenA = action.payload;
     },
+    changeFavorites: (state, action) => {
+      state.listfavorites = action.payload;
+    },
   },
 });
-export const { changeTokenA } = saveDataSlice.actions;
+export const { changeTokenA, changeFavorites } = saveDataSlice.actions;
 
 export default saveDataSlice.reducer;

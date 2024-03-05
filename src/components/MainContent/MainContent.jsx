@@ -1,16 +1,16 @@
-import React from "react";
-import "./MainContent.scss";
-import roze from "../../assets/images/roze.png";
-import fire from "../../assets/images/fire.png";
-import klub from "../../assets/images/klubn.png";
-import fruit from "../../assets/images/fruit.png";
-import { useDispatch, useSelector } from "react-redux";
-import { getMainProd } from "../../store/reducers/requestSlice";
-import EveryCard from "../EveryCard/EveryCard";
+import React from 'react';
+import './MainContent.scss';
+import roze from '../../assets/images/roze.png';
+import fire from '../../assets/images/fire.png';
+import klub from '../../assets/images/klubn.png';
+import fruit from '../../assets/images/fruit.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMainProd } from '../../store/reducers/requestSlice';
+import EveryCard from '../EveryCard/EveryCard';
 import {
   changeListPrice,
   changeLookPrice,
-} from "../../store/reducers/stateSlice";
+} from '../../store/reducers/stateSlice';
 
 const MainContent = () => {
   const dispatch = useDispatch();
@@ -18,14 +18,14 @@ const MainContent = () => {
   const { listPrice, lookPrice } = useSelector((state) => state.stateSlice);
 
   const listCategory = [
-    { id: 1, name: "Розы", img: roze },
-    { id: 2, name: "Пионы" },
-    { id: 3, name: "Шары" },
-    { id: 4, name: "Хиты", img: fire },
-    { id: 5, name: "Клубника", img: klub },
-    { id: 6, name: "Фруктовые", img: fruit },
-    { id: 7, name: "В коробке" },
-    { id: 8, name: "Акции" },
+    { id: 1, name: 'Розы', img: roze },
+    { id: 2, name: 'Пионы' },
+    { id: 3, name: 'Шары' },
+    { id: 4, name: 'Хиты', img: fire },
+    { id: 5, name: 'Клубника', img: klub },
+    { id: 6, name: 'Фруктовые', img: fruit },
+    { id: 7, name: 'В коробке' },
+    { id: 8, name: 'Акции' },
   ];
 
   React.useEffect(() => {
@@ -40,7 +40,7 @@ const MainContent = () => {
     dispatch(changeListPrice(newData));
   };
 
-  console.log(listPrice, "listPrice");
+  console.log(listPrice, 'listPrice');
 
   return (
     <div className="maincontent">
@@ -54,7 +54,7 @@ const MainContent = () => {
               {listPrice?.map((price) => (
                 <div
                   className={`priceSort__every ${
-                    price.active ? "activePrice" : ""
+                    price.active ? 'activePrice' : ''
                   }`}
                   onClick={() => clickPrice(price?.id)}
                   key={price?.id}
@@ -64,7 +64,7 @@ const MainContent = () => {
               ))}
             </div>
           )}
-          <ul className="category">
+          <ul className="categoryType">
             {listCategory?.map((i) => (
               <li key={i.id}>
                 <p>{i?.name}</p>

@@ -1,33 +1,15 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 const { REACT_APP_API_URL } = process.env;
 
-export const getPopularCategory = createAsyncThunk(
-  "getPopularCategory",
-  async function (info, { dispatch, rejectWithValue }) {
-    try {
-      const response = await axios({
-        method: "GET",
-        url: `${REACT_APP_API_URL}/api/get_categoty`,
-      });
-      if (response.status >= 200 && response.status < 300) {
-        return; /////////
-      } else {
-        throw Error(`Error: ${response.status}`);
-      }
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
 export const getMainProd = createAsyncThunk(
-  "getMainProd",
+  'getMainProd',
   async function (info, { dispatch, rejectWithValue }) {
+    /// все цветы 10440
     try {
       const response = await axios({
-        method: "GET",
-        url: `${REACT_APP_API_URL}/api/main_prod`,
+        method: 'GET',
+        url: `${REACT_APP_API_URL}/api/main_prod?id=10440`,
       });
       if (response.status >= 200 && response.status < 300) {
         return response?.data;
@@ -41,12 +23,13 @@ export const getMainProd = createAsyncThunk(
 );
 
 export const getToys = createAsyncThunk(
-  "getToys",
+  'getToys',
   async function (info, { dispatch, rejectWithValue }) {
+    /// для игрушек
     try {
       const response = await axios({
-        method: "GET",
-        url: `${REACT_APP_API_URL}/api/toys`,
+        method: 'GET',
+        url: `${REACT_APP_API_URL}/api/main_prod?id=10412`,
       });
       if (response.status >= 200 && response.status < 300) {
         return response?.data;
@@ -60,12 +43,73 @@ export const getToys = createAsyncThunk(
 );
 
 export const getSweets = createAsyncThunk(
-  "getSweets",
+  'getSweets',
   async function (info, { dispatch, rejectWithValue }) {
+    //// для конфет
     try {
       const response = await axios({
-        method: "GET",
-        url: `${REACT_APP_API_URL}/api/sweets`,
+        method: 'GET',
+        url: `${REACT_APP_API_URL}/api/main_prod?id=10411`,
+      });
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getRose = createAsyncThunk(
+  'getRose',
+  async function (info, { dispatch, rejectWithValue }) {
+    //// для роз 10414
+    try {
+      const response = await axios({
+        method: 'GET',
+        url: `${REACT_APP_API_URL}/api/main_prod?id=10414`,
+      });
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getOtherData = createAsyncThunk(
+  'getOtherData',
+  async function (id, { dispatch, rejectWithValue }) {
+    try {
+      const response = await axios({
+        method: 'GET',
+        url: `${REACT_APP_API_URL}/api/more?id=${id}`,
+      });
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getRoseSort = createAsyncThunk(
+  'getRoseSort', /// розы с сортировкой данных
+  async function (sort, { dispatch, rejectWithValue }) {
+    //// для роз 10414
+    try {
+      const response = await axios({
+        method: 'GET',
+        // url: `${REACT_APP_API_URL}/api/rose?id=10414`,
+        url: `${REACT_APP_API_URL}/api/main_prod?id=10414`, /// временно
       });
       if (response.status >= 200 && response.status < 300) {
         return response?.data;
@@ -79,12 +123,51 @@ export const getSweets = createAsyncThunk(
 );
 
 export const getTopCategory = createAsyncThunk(
-  "getTopCategory",
+  'getTopCategory',
   async function (info, { dispatch, rejectWithValue }) {
     try {
       const response = await axios({
-        method: "GET",
+        method: 'GET',
         url: `${REACT_APP_API_URL}/api/top_categ`,
+      });
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getTopFlowers = createAsyncThunk(
+  'getTopFlowers',
+  async function (info, { dispatch, rejectWithValue }) {
+    /// все цветы 10440(топ 30)
+    try {
+      const response = await axios({
+        method: 'GET',
+        url: `${REACT_APP_API_URL}/api/top_flowers`,
+      });
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getEveryData = createAsyncThunk(
+  'getEveryData',
+  async function (id, { dispatch, rejectWithValue }) {
+    try {
+      const response = await axios({
+        method: 'GET',
+        url: `${REACT_APP_API_URL}/api/every?id=${id}`,
       });
       if (response.status >= 200 && response.status < 300) {
         return response?.data;
@@ -103,24 +186,17 @@ const initialState = {
   listToys: [],
   listSweets: [],
   listTopCategory: [],
+  listRose: [], //// розы 10414  /// для каталога
+  listSortRose: [], //// для страницы роз
+  morelist: [],
+  otherData: [],
+  everyFlowers: {},
 };
 
 const requestSlice = createSlice({
-  name: "requestSlice",
+  name: 'requestSlice',
   initialState,
   extraReducers: (builder) => {
-    //////////////// getPopularCategory
-    builder.addCase(getPopularCategory.fulfilled, (state, action) => {
-      state.preloader = false;
-      state.categories = action.payload;
-    });
-    builder.addCase(getPopularCategory.rejected, (state, action) => {
-      state.error = action.payload;
-      state.preloader = false;
-    });
-    builder.addCase(getPopularCategory.pending, (state, action) => {
-      state.preloader = true;
-    });
     //////////////// getMainProd
     builder.addCase(getMainProd.fulfilled, (state, action) => {
       state.preloader = false;
@@ -167,6 +243,66 @@ const requestSlice = createSlice({
       state.preloader = false;
     });
     builder.addCase(getTopCategory.pending, (state, action) => {
+      state.preloader = true;
+    });
+    //////////////// getRose
+    builder.addCase(getRose.fulfilled, (state, action) => {
+      state.preloader = false;
+      state.listRose = action.payload;
+    });
+    builder.addCase(getRose.rejected, (state, action) => {
+      state.error = action.payload;
+      state.preloader = false;
+    });
+    builder.addCase(getRose.pending, (state, action) => {
+      state.preloader = true;
+    });
+    //////////////// getOtherData
+    builder.addCase(getOtherData.fulfilled, (state, action) => {
+      state.preloader = false;
+      state.otherData = action.payload;
+    });
+    builder.addCase(getOtherData.rejected, (state, action) => {
+      state.error = action.payload;
+      state.preloader = false;
+    });
+    builder.addCase(getOtherData.pending, (state, action) => {
+      state.preloader = true;
+    });
+    //////////////// getRoseSort
+    builder.addCase(getRoseSort.fulfilled, (state, action) => {
+      state.preloader = false;
+      state.listSortRose = action.payload;
+    });
+    builder.addCase(getRoseSort.rejected, (state, action) => {
+      state.error = action.payload;
+      state.preloader = false;
+    });
+    builder.addCase(getRoseSort.pending, (state, action) => {
+      state.preloader = true;
+    });
+    //////////////// getTopFlowers
+    builder.addCase(getTopFlowers.fulfilled, (state, action) => {
+      state.preloader = false;
+      state.morelist = action.payload;
+    });
+    builder.addCase(getTopFlowers.rejected, (state, action) => {
+      state.error = action.payload;
+      state.preloader = false;
+    });
+    builder.addCase(getTopFlowers.pending, (state, action) => {
+      state.preloader = true;
+    });
+    //////////////// getEveryData
+    builder.addCase(getEveryData.fulfilled, (state, action) => {
+      state.preloader = false;
+      state.everyFlowers = action.payload?.[0];
+    });
+    builder.addCase(getEveryData.rejected, (state, action) => {
+      state.error = action.payload;
+      state.preloader = false;
+    });
+    builder.addCase(getEveryData.pending, (state, action) => {
       state.preloader = true;
     });
   },

@@ -17,7 +17,7 @@ const MainPage = () => {
   const { listToys, listSweets } = useSelector((state) => state.requestSlice);
 
   React.useEffect(() => {
-    dispatch(getPopularCategory());
+    // dispatch(getPopularCategory());
     dispatch(getToys());
     dispatch(getSweets());
   }, []);

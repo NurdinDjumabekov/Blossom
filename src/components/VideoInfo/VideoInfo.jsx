@@ -1,9 +1,9 @@
-import React from "react";
-import "./VideoInfo.scss";
-import imgManager from "../../assets/images/video-manager.png";
-import InputMask from "react-input-mask";
-import { useDispatch } from "react-redux";
-import mp4 from "../../assets/video/video.mp4";
+import React from 'react';
+import './VideoInfo.scss';
+import imgManager from '../../assets/images/video-manager.png';
+import InputMask from 'react-input-mask';
+import { useDispatch } from 'react-redux';
+import mp4 from '../../assets/video/video.mp4';
 
 const VideoInfo = () => {
   const dispatch = useDispatch();
@@ -25,14 +25,14 @@ const VideoInfo = () => {
             width="675"
             height="390"
             controls
-            style={{ borderRadius: "8px" }}
+            style={{ borderRadius: '8px' }}
           >
             <source src={mp4} type="video/mp4" />
           </video>
         </div>
       </div>
       <div className="consultation">
-        <div className="container">
+        <div className="containerr">
           <div className="consultation__inner">
             <div className="consultation__text">
               <h5>Оставьте заявку и мы соберем для вас идеальный букет</h5>
