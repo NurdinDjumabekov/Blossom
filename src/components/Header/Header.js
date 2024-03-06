@@ -40,7 +40,7 @@ const Header = () => {
             {/* <img src={wa1} alt="" /> */}
           </div>
           <div className="mainInfo">
-            <NavLink>
+            <NavLink to={'/favorite'}>
               <img src={favorite} alt="{}" />
               {listfavorites?.length === 0 ? (
                 ''

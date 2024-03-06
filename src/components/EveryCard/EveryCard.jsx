@@ -39,16 +39,16 @@ const EveryCard = ({ content }) => {
     dispatch(changeFavorites([...listfavorites, obj]));
   };
 
-   const deleteCard = (id) => {
-     const updatedFavorites = listfavorites.filter(
-       (item) => item.codeid !== id
-     );
-     dispatch(changeFavorites(updatedFavorites));
-   };
+  //  const deleteCard = (id) => {
+  //    const updatedFavorites = listfavorites.filter(
+  //      (item) => item.codeid !== id
+  //    );
+  //    dispatch(changeFavorites(updatedFavorites));
+  //  };
 
-   const addCard = (obj) => {
-     dispatch(changeFavorites([...listfavorites, obj]));
-   };
+  //  const addCard = (obj) => {
+  //    dispatch(changeFavorites([...listfavorites, obj]));
+  //  };
 
   const payOneClick = () => {
     setLook(true);

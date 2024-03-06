@@ -9,6 +9,7 @@ import PionsPage from '../pages/PionsPage/PionsPage';
 import OtherFlowersPage from '../pages/OtherFlowersPage/OtherFlowersPage';
 import ContactsPage from '../pages/ContactsPage/ContactsPage';
 import DetailedPage from '../pages/DetailedPage/DetailedPage';
+import FavotitePage from '../pages/FavotitePage/FavotitePage';
 
 const MainRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const MainRoutes = () => {
           <Route path="/every/:id" element={<DetailedPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="/other/:id/:name" element={<OtherFlowersPage />} />
+          <Route path="/favorite" element={<FavotitePage />} />
         </Route>
         {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Routes>

@@ -70,16 +70,14 @@ const CatalogPage = () => {
             ))}
           </div>
           {morelist?.length !== 0 && (
-            <>
-              <div className="mainList">
-                <h3 className="title">Популярные цветы</h3>
-                <div className="list">
-                  {morelist?.map((i) => (
-                    <EveryCard key={i.codeid} content={i} />
-                  ))}
-                </div>
+            <div className="mainList">
+              <h3 className="title">Популярные цветы</h3>
+              <div className="list">
+                {morelist?.map((i) => (
+                  <EveryCard key={i.codeid} content={i} />
+                ))}
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>
