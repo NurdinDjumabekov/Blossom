@@ -1,14 +1,14 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 const { REACT_APP_API_URL } = process.env;
 
 export const getMainProd = createAsyncThunk(
-  'getMainProd',
+  "getMainProd",
   async function (info, { dispatch, rejectWithValue }) {
     /// все цветы 10440
     try {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `${REACT_APP_API_URL}/api/main_prod?id=10440`,
       });
       if (response.status >= 200 && response.status < 300) {
@@ -23,12 +23,12 @@ export const getMainProd = createAsyncThunk(
 );
 
 export const getToys = createAsyncThunk(
-  'getToys',
+  "getToys",
   async function (info, { dispatch, rejectWithValue }) {
     /// для игрушек
     try {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `${REACT_APP_API_URL}/api/main_prod?id=10412`,
       });
       if (response.status >= 200 && response.status < 300) {
@@ -43,12 +43,12 @@ export const getToys = createAsyncThunk(
 );
 
 export const getSweets = createAsyncThunk(
-  'getSweets',
+  "getSweets",
   async function (info, { dispatch, rejectWithValue }) {
     //// для конфет
     try {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `${REACT_APP_API_URL}/api/main_prod?id=10411`,
       });
       if (response.status >= 200 && response.status < 300) {
@@ -63,12 +63,12 @@ export const getSweets = createAsyncThunk(
 );
 
 export const getRose = createAsyncThunk(
-  'getRose',
+  "getRose",
   async function (info, { dispatch, rejectWithValue }) {
     //// для роз 10414
     try {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `${REACT_APP_API_URL}/api/main_prod?id=10414`,
       });
       if (response.status >= 200 && response.status < 300) {
@@ -83,11 +83,11 @@ export const getRose = createAsyncThunk(
 );
 
 export const getOtherData = createAsyncThunk(
-  'getOtherData',
+  "getOtherData",
   async function (id, { dispatch, rejectWithValue }) {
     try {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `${REACT_APP_API_URL}/api/more?id=${id}`,
       });
       if (response.status >= 200 && response.status < 300) {
@@ -102,12 +102,12 @@ export const getOtherData = createAsyncThunk(
 );
 
 export const getRoseSort = createAsyncThunk(
-  'getRoseSort', /// розы с сортировкой данных
+  "getRoseSort", /// розы с сортировкой данных
   async function (sort, { dispatch, rejectWithValue }) {
     //// для роз 10414
     try {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         // url: `${REACT_APP_API_URL}/api/rose?id=10414`,
         url: `${REACT_APP_API_URL}/api/main_prod?id=10414`, /// временно
       });
@@ -123,11 +123,11 @@ export const getRoseSort = createAsyncThunk(
 );
 
 export const getTopCategory = createAsyncThunk(
-  'getTopCategory',
+  "getTopCategory",
   async function (info, { dispatch, rejectWithValue }) {
     try {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `${REACT_APP_API_URL}/api/top_categ`,
       });
       if (response.status >= 200 && response.status < 300) {
@@ -142,12 +142,12 @@ export const getTopCategory = createAsyncThunk(
 );
 
 export const getTopFlowers = createAsyncThunk(
-  'getTopFlowers',
+  "getTopFlowers",
   async function (info, { dispatch, rejectWithValue }) {
     /// все цветы 10440(топ 30)
     try {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `${REACT_APP_API_URL}/api/top_flowers`,
       });
       if (response.status >= 200 && response.status < 300) {
@@ -162,15 +162,37 @@ export const getTopFlowers = createAsyncThunk(
 );
 
 export const getEveryData = createAsyncThunk(
-  'getEveryData',
+  "getEveryData",
   async function (id, { dispatch, rejectWithValue }) {
     try {
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: `${REACT_APP_API_URL}/api/every?id=${id}`,
       });
       if (response.status >= 200 && response.status < 300) {
         return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const createZakaz = createAsyncThunk(
+  "createZakaz",
+  async function (info, { dispatch, rejectWithValue }) {
+    try {
+      const response = await axios({
+        method: "POST",
+        url: `${REACT_APP_API_URL}/api/create_zakaz`,
+        data: {
+          ...info,
+        },
+      });
+      if (response.status >= 200 && response.status < 300) {
+        // return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);
       }
@@ -191,10 +213,20 @@ const initialState = {
   morelist: [],
   otherData: [],
   everyFlowers: {},
+  zakaz: {
+    zakaz_summ: 0,
+    zakaz_comment: "",
+    client_fio: "",
+    client_phone: "",
+    zakaz_date: "",
+    address_from: "",
+    address_to: "",
+    summ_chek: "",
+  },
 };
 
 const requestSlice = createSlice({
-  name: 'requestSlice',
+  name: "requestSlice",
   initialState,
   extraReducers: (builder) => {
     //////////////// getMainProd

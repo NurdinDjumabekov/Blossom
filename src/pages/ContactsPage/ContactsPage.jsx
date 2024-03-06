@@ -1,16 +1,19 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './ContactsPage.scss';
-import { numWebSite } from '../../helpers/dataArr';
-import { Map, Placemark, YMaps } from 'react-yandex-maps';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./ContactsPage.scss";
+import { numWebSite } from "../../helpers/dataArr";
+import { Map, Placemark, YMaps } from "react-yandex-maps";
 
 const ContactsPage = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="contactsPage">
       <div className="container">
         <div className="contactsPage__inner">
           <div className="navigateWeb">
-            <NavLink to={'/'}>Доставка цветов</NavLink>
+            <NavLink to={"/"}>Доставка цветов</NavLink>
             <span>Контакты</span>
           </div>
           <div className="infoContact">
@@ -22,9 +25,9 @@ const ContactsPage = () => {
                     zoom: 14,
                   }}
                   style={{
-                    borderRadius: '8px',
-                    width: '600px',
-                    height: '100%',
+                    borderRadius: "8px",
+                    width: "600px",
+                    height: "100%",
                   }}
                 >
                   <Placemark defaultGeometry={[42, 8924, 74, 5366]} />

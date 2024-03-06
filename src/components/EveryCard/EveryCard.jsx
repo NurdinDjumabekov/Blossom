@@ -1,32 +1,38 @@
-import React, { useState } from 'react';
-import './EveryCard.scss';
-import noImg from '../../assets/images/no_photo.jpg';
-import heartRed from '../../assets/icons/heartRed.svg';
-import heartWhite from '../../assets/icons/heartWhite.svg';
-import star from '../../assets/icons/star.svg';
-import { renderStars } from '../../helpers/renderStar';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeFavorites } from '../../store/reducers/saveDataSlice';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./EveryCard.scss";
+import noImg from "../../assets/images/no_photo.jpg";
+import heartRed from "../../assets/icons/heartRed.svg";
+import heartWhite from "../../assets/icons/heartWhite.svg";
+import star from "../../assets/icons/star.svg";
+import { renderStars } from "../../helpers/renderStar";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addListBasket,
+  changeFavorites,
+  changeListBasket,
+} from "../../store/reducers/saveDataSlice";
+import { useNavigate } from "react-router-dom";
 
 const EveryCard = ({ content }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [look, setLook] = useState(false);
-  const { listfavorites } = useSelector((state) => state.saveDataSlice);
+  const { listfavorites, listBasket } = useSelector(
+    (state) => state.saveDataSlice
+  );
 
   React.useEffect(() => {
     const handleClickOutside = (event) => {
       // Если клик был вне формы, то скрываем ее
-      if (look && !event.target.closest('.sendZakaz')) {
+      if (look && !event.target.closest(".sendZakaz")) {
         setLook(false);
       }
     };
     // Добавляем слушатель при монтировании компонента
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     // Очищаем слушатель при размонтировании компонента
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [look]);
 
@@ -39,16 +45,9 @@ const EveryCard = ({ content }) => {
     dispatch(changeFavorites([...listfavorites, obj]));
   };
 
-  //  const deleteCard = (id) => {
-  //    const updatedFavorites = listfavorites.filter(
-  //      (item) => item.codeid !== id
-  //    );
-  //    dispatch(changeFavorites(updatedFavorites));
-  //  };
-
-  //  const addCard = (obj) => {
-  //    dispatch(changeFavorites([...listfavorites, obj]));
-  //  };
+  const addCardBasket = () => {
+    dispatch(addListBasket(content));
+  };
 
   const payOneClick = () => {
     setLook(true);
@@ -64,7 +63,7 @@ const EveryCard = ({ content }) => {
         <div className="mainImg">
           <img
             src={
-              content.foto === 'undefined' || content.foto
+              content.foto === "undefined" || content.foto
                 ? content.foto
                 : noImg
             }
@@ -91,7 +90,7 @@ const EveryCard = ({ content }) => {
           <h3>{content?.product_name}</h3>
           <div className="rating">
             <span>
-              {+content?.status === 0 ? 'В наличии' : 'нет в наличии'}
+              {+content?.status === 0 ? "В наличии" : "нет в наличии"}
             </span>
             <div className="star">
               {renderStars(5, star)}
@@ -102,7 +101,7 @@ const EveryCard = ({ content }) => {
         </div>
         <div className="actions">
           <button onClick={() => setLook(true)}>Купить в 1 клик</button>
-          <button>В корзину</button>
+          <button onClick={addCardBasket}>В корзину</button>
         </div>
       </div>
 

@@ -1,13 +1,13 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './PionsPage.scss';
-import { getRoseSort } from '../../store/reducers/requestSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import EveryCard from '../../components/EveryCard/EveryCard';
-import arrow from '../../assets/icons/arrowSort.svg';
-import CallMe from '../../components/CallMe/CallMe';
-import VideoInfo from '../../components/VideoInfo/VideoInfo';
-import MoreInfo from '../../components/MoreInfo/MoreInfo';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./PionsPage.scss";
+import { getRoseSort } from "../../store/reducers/requestSlice";
+import { useDispatch, useSelector } from "react-redux";
+import EveryCard from "../../components/EveryCard/EveryCard";
+import arrow from "../../assets/icons/arrowSort.svg";
+import CallMe from "../../components/CallMe/CallMe";
+import VideoInfo from "../../components/VideoInfo/VideoInfo";
+import MoreInfo from "../../components/MoreInfo/MoreInfo";
 
 const PionsPage = () => {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ const PionsPage = () => {
 
   React.useEffect(() => {
     // dispatch(getRoseSort());
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -23,7 +24,7 @@ const PionsPage = () => {
       <div className="container">
         <div className="rosePage__inner">
           <div className="navigateWeb">
-            <NavLink to={'/'}>Доставка цветов</NavLink>
+            <NavLink to={"/"}>Доставка цветов</NavLink>
             <span>Пионы</span>
           </div>
           {/* <div className="choiceFlowers"></div> */}

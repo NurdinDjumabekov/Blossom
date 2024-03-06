@@ -20,6 +20,7 @@ const MainPage = () => {
     // dispatch(getPopularCategory());
     dispatch(getToys());
     dispatch(getSweets());
+    window.scrollTo(0, 0);
   }, []);
 
   return (

@@ -1,18 +1,22 @@
-import React from 'react';
-import './FavotitePage.scss';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import EveryCard from '../../components/EveryCard/EveryCard';
+import React from "react";
+import "./FavotitePage.scss";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import EveryCard from "../../components/EveryCard/EveryCard";
 
 const FavotitePage = () => {
   const { listfavorites } = useSelector((state) => state.saveDataSlice);
   //   console.log(listfavorites);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="favotitePage">
       <div className="container">
         <div className="navigateWeb">
-          <NavLink to={'/'}>Доставка цветов</NavLink>
+          <NavLink to={"/"}>Доставка цветов</NavLink>
           <span>Избранные товары</span>
         </div>
         <h3 className="title">Избранные товары</h3>

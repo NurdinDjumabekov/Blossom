@@ -1,21 +1,21 @@
-import React from 'react';
-import './CatalogPage.scss';
-import Nav from '../../components/Nav/Nav';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import "./CatalogPage.scss";
+import Nav from "../../components/Nav/Nav";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getRose,
   getTopCategory,
   getTopFlowers,
-} from '../../store/reducers/requestSlice';
-import { NavLink } from 'react-router-dom';
-import hit from '../../assets/none/hit.webp';
-import rose from '../../assets/none/rose.webp';
-import pions from '../../assets/none/pions.webp';
-import inKorobka from '../../assets/none/inKorobka.webp';
-import nam from '../../assets/none/nam.webp';
-import tulpan from '../../assets/none/tulpan.webp';
-import gipsofils from '../../assets/none/gipsofils.webp';
-import EveryCard from '../../components/EveryCard/EveryCard';
+} from "../../store/reducers/requestSlice";
+import { NavLink } from "react-router-dom";
+import hit from "../../assets/none/hit.webp";
+import rose from "../../assets/none/rose.webp";
+import pions from "../../assets/none/pions.webp";
+import inKorobka from "../../assets/none/inKorobka.webp";
+import nam from "../../assets/none/nam.webp";
+import tulpan from "../../assets/none/tulpan.webp";
+import gipsofils from "../../assets/none/gipsofils.webp";
+import EveryCard from "../../components/EveryCard/EveryCard";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -29,16 +29,17 @@ const CatalogPage = () => {
     dispatch(getTopCategory());
     dispatch(getRose());
     dispatch(getTopFlowers());
+    window.scrollTo(0, 0);
   }, []);
 
-  console.log(listTopCategory, 'listTopCategory');
+  console.log(listTopCategory, "listTopCategory");
 
   return (
     <div className="catalogPage">
       <div className="container">
         <div className="catalogPage__inner">
           <div className="navigateWeb">
-            <NavLink to={'/'}>Доставка цветов</NavLink>
+            <NavLink to={"/"}>Доставка цветов</NavLink>
             <span>Каталог</span>
           </div>
           <h3 className="title">Популярные категории</h3>
