@@ -17,24 +17,24 @@ const initialState = {
       id: 2,
       name: "2 0000 - 4 0000 сом",
       active: false,
-      start: 2000,
+      start: 2001,
       end: 4000,
     },
     {
       id: 3,
       name: "4 0000 - 8 0000 сом",
       active: false,
-      start: 4000,
+      start: 4001,
       end: 8000,
     },
     {
       id: 4,
       name: "8 0000 - 15 0000 сом",
       active: false,
-      start: 8000,
+      start: 8001,
       end: 15000,
     },
-    { id: 5, name: "от 15 0000 сом", active: false, start: 15000, end: 100000 },
+    { id: 5, name: "от 15 0000 сом", active: false, start: 15001, end: 100000 },
   ],
 
   listCategory: [

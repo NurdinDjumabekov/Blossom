@@ -8,7 +8,7 @@ const Menu = () => {
   const clickCategory = (obj) => {
     navigate(obj?.link);
   };
-
+  /// /other/10438/Клубника
   return (
     <div className="menu">
       <div className="container">

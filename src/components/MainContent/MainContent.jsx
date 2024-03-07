@@ -1,6 +1,5 @@
 import React from "react";
 import "./MainContent.scss";
-
 import { useDispatch, useSelector } from "react-redux";
 import { getSortData } from "../../store/reducers/requestSlice";
 import EveryCard from "../EveryCard/EveryCard";
@@ -18,7 +17,15 @@ const MainContent = () => {
   );
 
   React.useEffect(() => {
-    // dispatch(getSortData({ start: "", end: "", type: 0 }));
+    const priceObj = listPrice.find((price) => price.active === true);
+    const categObj = listCategory.find((category) => category.active === true);
+    dispatch(
+      getSortData({
+        start: priceObj?.start || "",
+        end: priceObj?.end || "",
+        type: +categObj?.id,
+      })
+    );
   }, []);
 
   const clickPrice = (id, start, end) => {
@@ -27,8 +34,8 @@ const MainContent = () => {
       active: +id === +button.id,
     }));
     dispatch(changeListPrice(newData));
-    // const obj = listCategory.find((category) => category.active === true);
-    // dispatch(getSortData({ start, end, type: obj?.id }));
+    const obj = listCategory.find((category) => category.active === true);
+    dispatch(getSortData({ start, end, type: +obj?.id }));
   };
 
   const clickCategory = (id) => {
@@ -37,10 +44,12 @@ const MainContent = () => {
       active: +id === +button.id,
     }));
     dispatch(changeListCategory(newData));
-    // dispatch(getSortData({ start, end, type: 10414 }));
-  };
+    const obj = listPrice.find((price) => price.active === true);
 
-  console.log(listPrice, "listPrice");
+    dispatch(
+      getSortData({ start: obj?.start || "", end: obj?.end || "", type: id })
+    );
+  };
 
   return (
     <div className="maincontent">
@@ -66,7 +75,11 @@ const MainContent = () => {
           )}
           <ul className="categoryType">
             {listCategory?.map((i) => (
-              <li key={i.id} onClick={clickCategory(i?.id)}>
+              <li
+                key={i.id}
+                onClick={() => clickCategory(i?.id)}
+                className={i?.active ? "activeType" : ""}
+              >
                 <p>{i?.name}</p>
                 {i?.img && <img src={i?.img} alt="выбор" />}
               </li>

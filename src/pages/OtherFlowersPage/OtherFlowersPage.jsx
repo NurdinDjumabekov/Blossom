@@ -1,13 +1,13 @@
-import React from 'react';
-import { NavLink, useParams } from 'react-router-dom';
-import './OtherFlowersPage.scss';
-import { getOtherData } from '../../store/reducers/requestSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import EveryCard from '../../components/EveryCard/EveryCard';
-import arrow from '../../assets/icons/arrowSort.svg';
-import CallMe from '../../components/CallMe/CallMe';
-import VideoInfo from '../../components/VideoInfo/VideoInfo';
-import MoreInfo from '../../components/MoreInfo/MoreInfo';
+import React from "react";
+import { NavLink, useParams } from "react-router-dom";
+import "./OtherFlowersPage.scss";
+import { getOtherData } from "../../store/reducers/requestSlice";
+import { useDispatch, useSelector } from "react-redux";
+import EveryCard from "../../components/EveryCard/EveryCard";
+import arrow from "../../assets/icons/arrowSort.svg";
+import CallMe from "../../components/CallMe/CallMe";
+import VideoInfo from "../../components/VideoInfo/VideoInfo";
+import MoreInfo from "../../components/MoreInfo/MoreInfo";
 
 const OtherFlowersPage = () => {
   const dispatch = useDispatch();
@@ -20,14 +20,14 @@ const OtherFlowersPage = () => {
     dispatch(getOtherData(id));
     window.scrollTo(0, 0);
   }, []);
-  console.log(otherData, 'otherData');
+  console.log(otherData, "otherData");
 
   return (
     <div className="rosePage">
       <div className="container">
         <div className="rosePage__inner">
           <div className="navigateWeb">
-            <NavLink to={'/'}>Доставка цветов</NavLink>
+            <NavLink to={"/"}>Доставка цветов</NavLink>
             <span>{name}</span>
           </div>
           {/* <div className="choiceFlowers"></div> */}

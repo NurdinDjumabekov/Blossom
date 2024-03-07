@@ -13,8 +13,8 @@ const MainPage = () => {
   const { listToys, listSweets } = useSelector((state) => state.requestSlice);
 
   React.useEffect(() => {
-    // dispatch(getToys());
-    // dispatch(getSweets());
+    dispatch(getToys());
+    dispatch(getSweets());
     window.scrollTo(0, 0);
   }, []);
 

@@ -1,6 +1,5 @@
 import React from "react";
 import "./CatalogPage.scss";
-import Nav from "../../components/Nav/Nav";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRose,
@@ -32,7 +31,8 @@ const CatalogPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  console.log(listTopCategory, "listTopCategory");
+  // console.log(listTopCategory, "listTopCategory");
+  console.log(listRose, "listRose");
 
   return (
     <div className="catalogPage">
@@ -45,7 +45,10 @@ const CatalogPage = () => {
           <h3 className="title">Популярные категории</h3>
           <div className="topCategory">
             {listTopCategory?.map((i, ind) => (
-              <NavLink key={i?.codeid}>
+              <NavLink
+                key={i?.codeid}
+                to={`/other/${i?.codeid}/${i?.category_name}`}
+              >
                 <div className="flowersImg">
                   <img src={arrImg[ind]} alt="" />
                 </div>

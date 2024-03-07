@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./EveryCard.scss";
 import noImg from "../../assets/images/no_photo.jpg";
+import heartBlack from "../../assets/icons/heartBlack.svg";
 import heartRed from "../../assets/icons/heartRed.svg";
-import heartWhite from "../../assets/icons/heartWhite.svg";
 import star from "../../assets/icons/star.svg";
 import { renderStars } from "../../helpers/renderStar";
 import { useDispatch, useSelector } from "react-redux";
@@ -84,7 +84,7 @@ const EveryCard = ({ content }) => {
             </div>
           ) : (
             <div className="addImg" onClick={() => addCard(content)}>
-              <img src={heartWhite} alt="" />
+              <img src={heartBlack} alt="" />
             </div>
           )}
         </div>

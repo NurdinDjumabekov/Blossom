@@ -40,7 +40,6 @@
       .activePrice {
         background: #c14e77;
         color: #fff;
-
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       }
     }
@@ -78,6 +77,12 @@
       display: block;
       width: 24px;
       height: 24px;
+    }
+  }
+  .activeType {
+    background: #b42658;
+    p {
+      color: #fff;
     }
   }
 }
