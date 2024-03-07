@@ -12,7 +12,8 @@ const initialState = {
     state: false,
   },
   listPrice: [
-    { id: 1, name: "до 2 0000 сом", active: false, start: 0, end: 2000 },
+    { id: 0, name: "", active: true, start: 0, end: 1000000 },
+    { id: 1, name: "до 2 000 сом", active: false, start: 0, end: 2000 },
     {
       id: 2,
       name: "2 0000 - 4 0000 сом",
@@ -22,19 +23,19 @@ const initialState = {
     },
     {
       id: 3,
-      name: "4 0000 - 8 0000 сом",
+      name: "4 000 - 8 000 сом",
       active: false,
       start: 4001,
       end: 8000,
     },
     {
       id: 4,
-      name: "8 0000 - 15 0000 сом",
+      name: "8 000 - 15 000 сом",
       active: false,
       start: 8001,
       end: 15000,
     },
-    { id: 5, name: "от 15 0000 сом", active: false, start: 15001, end: 100000 },
+    { id: 5, name: "от 15 000 сом", active: false, start: 15001, end: 100000 },
   ],
 
   listCategory: [

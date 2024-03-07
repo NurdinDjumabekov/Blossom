@@ -45,7 +45,9 @@ const OtherFlowersPage = () => {
               </button>
             </div>
           </div>
-          {otherData?.length !== 0 && (
+          {otherData?.length === 0 ? (
+            <p className="absent">Данные отсутствуют</p>
+          ) : (
             <>
               <div className="mainList">
                 <div className="list">

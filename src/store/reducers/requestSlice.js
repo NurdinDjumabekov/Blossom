@@ -103,6 +103,26 @@ export const getRose = createAsyncThunk(
   }
 );
 
+export const getPions = createAsyncThunk(
+  "getPions",
+  async function (info, { dispatch, rejectWithValue }) {
+    //// Пионы 10416
+    try {
+      const response = await axios({
+        method: "GET",
+        url: `${REACT_APP_API_URL}/api/main_prod?id=10416`,
+      });
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data?.recordset;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getOtherData = createAsyncThunk(
   "getOtherData",
   async function (id, { dispatch, rejectWithValue }) {
@@ -191,7 +211,7 @@ export const getEveryData = createAsyncThunk(
         url: `${REACT_APP_API_URL}/api/every?id=${id}`,
       });
       if (response.status >= 200 && response.status < 300) {
-        return response?.data?.recordset;
+        return response?.data?.[0];
       } else {
         throw Error(`Error: ${response.status}`);
       }
@@ -231,10 +251,12 @@ const initialState = {
   listSweets: [],
   listTopCategory: [],
   listRose: [], //// розы 10414  /// для каталога
+  listPions: [], //// пионы 10416  /// для каталога
   listSortRose: [], //// для страницы роз
   morelist: [],
   otherData: [],
   everyFlowers: {},
+
   zakaz: {
     zakaz_summ: 0,
     zakaz_comment: "",
@@ -323,6 +345,18 @@ const requestSlice = createSlice({
     builder.addCase(getRose.pending, (state, action) => {
       state.preloader = true;
     });
+    //////////////// getPions
+    builder.addCase(getPions.fulfilled, (state, action) => {
+      state.preloader = false;
+      state.listPions = action.payload;
+    });
+    builder.addCase(getPions.rejected, (state, action) => {
+      state.error = action.payload;
+      state.preloader = false;
+    });
+    builder.addCase(getPions.pending, (state, action) => {
+      state.preloader = true;
+    });
     //////////////// getOtherData
     builder.addCase(getOtherData.fulfilled, (state, action) => {
       state.preloader = false;
@@ -362,7 +396,7 @@ const requestSlice = createSlice({
     //////////////// getEveryData
     builder.addCase(getEveryData.fulfilled, (state, action) => {
       state.preloader = false;
-      state.everyFlowers = action.payload?.[0];
+      state.everyFlowers = action.payload;
     });
     builder.addCase(getEveryData.rejected, (state, action) => {
       state.error = action.payload;

@@ -29,18 +29,32 @@
       gap: 25px;
       margin: 20px 0 0 0;
       border-radius: 8px;
+      &__shadow {
+        position: relative;
+      }
       &__every {
         padding: 15px 20px;
         background: #fff;
         text-align: center;
         border-radius: 8px;
         cursor: pointer;
-        position: relative;
       }
+
       .activePrice {
         background: #c14e77;
         color: #fff;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+      .activeImg {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        background: #b42658;
+        top: -10px;
+        right: -10px;
+        padding: 5px;
+        border-radius: 50%;
+        cursor: pointer;
       }
     }
   }

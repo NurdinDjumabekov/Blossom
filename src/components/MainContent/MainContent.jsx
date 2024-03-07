@@ -3,6 +3,7 @@ import "./MainContent.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getSortData } from "../../store/reducers/requestSlice";
 import EveryCard from "../EveryCard/EveryCard";
+import krest from "../../assets/icons/krestikWhite.svg";
 import {
   changeListCategory,
   changeListPrice,
@@ -51,6 +52,8 @@ const MainContent = () => {
     );
   };
 
+  console.log(listPrice, "listPrice");
+
   return (
     <div className="maincontent">
       <div className="container">
@@ -60,15 +63,27 @@ const MainContent = () => {
           </button>
           {lookPrice && (
             <div className="priceSort">
-              {listPrice?.map((price) => (
-                <div
-                  className={`priceSort__every ${
-                    price.active ? "activePrice" : ""
-                  }`}
-                  onClick={() => clickPrice(price?.id, price.start, price?.end)}
-                  key={price?.id}
-                >
-                  {price?.name}
+              {listPrice?.slice(1, 6)?.map((price) => (
+                <div className="priceSort__shadow">
+                  <div
+                    className={`priceSort__every ${
+                      price.active ? "activePrice" : ""
+                    }`}
+                    onClick={() =>
+                      clickPrice(price?.id, price.start, price?.end)
+                    }
+                    key={price?.id}
+                  >
+                    {price?.name}
+                  </div>
+                  {price.active && (
+                    <img
+                      src={krest}
+                      alt="x"
+                      onClick={() => clickPrice(0, 0, 100000)}
+                      className="activeImg"
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -87,7 +102,7 @@ const MainContent = () => {
           </ul>
           <div className="list">
             {mainList?.length === 0 ? (
-              <p className="absent">Цветы отсутствуют</p>
+              <p className="absent">Данные отсутствуют</p>
             ) : (
               <>
                 {mainList?.map((i) => (

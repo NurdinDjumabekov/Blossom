@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./PionsPage.scss";
-import { getRoseSort } from "../../store/reducers/requestSlice";
+import { getPions } from "../../store/reducers/requestSlice";
 import { useDispatch, useSelector } from "react-redux";
 import EveryCard from "../../components/EveryCard/EveryCard";
 import arrow from "../../assets/icons/arrowSort.svg";
@@ -11,11 +11,10 @@ import MoreInfo from "../../components/MoreInfo/MoreInfo";
 
 const PionsPage = () => {
   const dispatch = useDispatch();
-
-  const { listSortRose } = useSelector((state) => state.requestSlice);
+  const { listPions } = useSelector((state) => state.requestSlice);
 
   React.useEffect(() => {
-    // dispatch(getRoseSort());
+    dispatch(getPions());
     window.scrollTo(0, 0);
   }, []);
 
@@ -42,11 +41,11 @@ const PionsPage = () => {
               </button>
             </div>
           </div>
-          {listSortRose?.length !== 0 && (
+          {listPions?.length !== 0 && (
             <>
               <div className="mainList">
                 <div className="list">
-                  {listSortRose?.map((i) => (
+                  {listPions?.map((i) => (
                     <EveryCard key={i.codeid} content={i} />
                   ))}
                 </div>

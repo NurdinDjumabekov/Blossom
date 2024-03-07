@@ -7,7 +7,6 @@ import altImg from "../../assets/images/no_photo.jpg";
 import star from "../../assets/icons/star.svg";
 import { renderStars } from "../../helpers/renderStar";
 import CallMe from "../../components/CallMe/CallMe";
-import VideoInfo from "../../components/VideoInfo/VideoInfo";
 import MoreInfo from "../../components/MoreInfo/MoreInfo";
 import EveryCard from "../../components/EveryCard/EveryCard";
 import { imgParse } from "../../helpers/imgParse";
@@ -18,13 +17,13 @@ const DetailedPage = () => {
   const { everyFlowers, listSweets } = useSelector(
     (state) => state.requestSlice
   );
-  console.log(everyFlowers, "everyFlowers");
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getEveryData(id));
     dispatch(getSweets());
   }, []);
+  // console.log(everyFlowers, "everyFlowers");
 
   return (
     <div className="detailedPage">

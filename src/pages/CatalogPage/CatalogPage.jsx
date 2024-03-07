@@ -31,7 +31,7 @@ const CatalogPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // console.log(listTopCategory, "listTopCategory");
+  console.log(listTopCategory, "listTopCategory");
   console.log(listRose, "listRose");
 
   return (
@@ -59,7 +59,17 @@ const CatalogPage = () => {
               </NavLink>
             ))}
           </div>
-          <h3 className="title">Розы</h3>
+          {listRose?.length !== 0 && (
+            <div className="mainList">
+              <h3 className="title">Розы</h3>
+              <div className="list">
+                {listRose?.map((i) => (
+                  <EveryCard key={i.codeid} content={i} />
+                ))}
+              </div>
+            </div>
+          )}
+          {/* <h3 className="title">Розы</h3>
           <div className="topCategory">
             {listRose?.map((i, ind) => (
               <NavLink key={i?.codeid}>
@@ -72,7 +82,7 @@ const CatalogPage = () => {
                 </div>
               </NavLink>
             ))}
-          </div>
+          </div> */}
           {morelist?.length !== 0 && (
             <div className="mainList">
               <h3 className="title">Популярные цветы</h3>
