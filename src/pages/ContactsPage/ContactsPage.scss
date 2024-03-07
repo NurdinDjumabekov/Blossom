@@ -1,0 +1,33 @@
+.contactsPage {
+  &__inner {
+    .infoContact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 50px 0px;
+      .map {
+        min-width: 600px;
+        height: 450px;
+      }
+      .mapText {
+        width: 500px;
+        p {
+          color: #e2a178;
+          line-height: 1.35;
+          font-weight: 600;
+          font-size: 16px;
+          font-family: 'Playfair Display', serif;
+        }
+        span {
+          display: block;
+          color: #414141;
+          line-height: 1.35;
+          font-weight: 600;
+          font-size: 25px;
+          font-family: 'Roboto', sans-serif;
+          margin: 5px 0 10px 0;
+        }
+      }
+    }
+  }
+}
