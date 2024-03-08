@@ -20,7 +20,7 @@ const OtherFlowersPage = () => {
     dispatch(getOtherData(id));
     window.scrollTo(0, 0);
   }, []);
-  console.log(otherData, "otherData");
+  // console.log(otherData, "otherData");
 
   return (
     <div className="rosePage">

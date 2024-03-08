@@ -4,9 +4,14 @@ import { listCategory, numWebSite } from "../../helpers/dataArr";
 import logo from "../../assets/images/LogoBlossom.png";
 import inst from "../../assets/icons/insta.svg";
 import wa from "../../assets/icons/wa.svg";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
-  const clickCategory = (click) => {};
+  const navigate = useNavigate();
+  const clickCategory = (obj) => {
+    navigate(obj?.link);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const clickScroll = (click) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -22,7 +27,7 @@ const Footer = () => {
             </div>
             <ul>
               {listCategory.map((categ) => (
-                <li onClick={() => clickCategory()} key={categ?.id}>
+                <li onClick={() => clickCategory(categ)} key={categ?.id}>
                   {categ?.name}
                 </li>
               ))}

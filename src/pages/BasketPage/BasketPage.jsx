@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./BasketPage.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,19 +9,37 @@ import {
   delEveryBasket,
   delListBasket,
 } from "../../store/reducers/saveDataSlice";
-import { countOrder, sumOrder } from "../../helpers/sumOrder";
 import SendDataOrder from "../../components/SendDataOrder/SendDataOrder";
 import { imgParse } from "../../helpers/imgParse";
 
 const BasketPage = () => {
   const dispatch = useDispatch();
   const { listBasket } = useSelector((state) => state.saveDataSlice);
-  console.log(listBasket, "listBasket");
   const bottomRef = React.useRef();
+  const [sum, setSum] = useState(0);
+  const [count, setCount] = useState(0);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  React.useEffect(() => {
+    if (listBasket) {
+      const totalSum = listBasket.reduce((acc, item) => {
+        const productPrice = item.product_price || 0;
+        const count = item.count || 0;
+        return acc + productPrice * count;
+      }, 0);
+
+      const totalCount = listBasket.reduce((acc, item) => {
+        const count = item.count || 0;
+        return acc + count;
+      }, 0);
+
+      setSum(totalSum);
+      setCount(totalCount);
+    }
+  }, [listBasket]);
 
   const scrollToBottom = () => {
     bottomRef.current.scrollIntoView({ behavior: "smooth" });
@@ -38,6 +56,9 @@ const BasketPage = () => {
           <div className="basketMain">
             <h3 className="title">Корзина</h3>
             <div className="line"></div>
+            {listBasket?.length === 0 && (
+              <p class="absent">Ваша корзина пустая</p>
+            )}
             {listBasket?.map((flow) => (
               <div className="everyBasket" key={flow?.codeid}>
                 <div className="everyBasket__inner">
@@ -91,11 +112,11 @@ const BasketPage = () => {
             <div>
               <div>
                 <p>Кол-во товаров.... </p>
-                <p>{sumOrder()}</p>
+                <p>{count}</p>
               </div>
               <div>
                 <p>Стоимость.... </p>
-                <p>{countOrder()} сом</p>
+                <p>{sum} сом</p>
               </div>
             </div>
             <button onClick={scrollToBottom}>

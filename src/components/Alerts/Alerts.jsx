@@ -55,10 +55,10 @@ const Alerts = () => {
 
   const styleText = {
     color: "#222",
-    fontFamily: "Kurale, sans-serif",
+    fontFamily: "EB Garamond, serif",
     fontSize: window.innerWidth <= 530 ? "20px" : "30px",
     fontStyle: "normal",
-    fontWeight: 700,
+    fontWeight: 600,
     lineHeight: "normal",
     textAlign: "center",
     "@media (max-width: 500px)": {

@@ -31,7 +31,7 @@ const MainRoutes = () => {
       </Routes>
       {/* <MoreInfo /> */}
       {/* {true && <Preloader />} */}
-      {/* <Alerts /> */}
+      <Alerts />
     </>
   );
 };

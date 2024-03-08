@@ -31,8 +31,8 @@ const CatalogPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  console.log(listTopCategory, "listTopCategory");
-  console.log(listRose, "listRose");
+  // console.log(listTopCategory, "listTopCategory");
+  // console.log(listRose, "listRose");
 
   return (
     <div className="catalogPage">

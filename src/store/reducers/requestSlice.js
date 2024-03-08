@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { clearBasket } from "./saveDataSlice";
 const { REACT_APP_API_URL } = process.env;
 
 export const getMainProd = createAsyncThunk(
@@ -233,7 +234,8 @@ export const createZakaz = createAsyncThunk(
         },
       });
       if (response.status >= 200 && response.status < 300) {
-        // return response?.data?.recordset;
+        dispatch(clearZakaz());
+        dispatch(clearBasket());
       } else {
         throw Error(`Error: ${response.status}`);
       }
@@ -406,8 +408,24 @@ const requestSlice = createSlice({
       state.preloader = true;
     });
   },
-  reducers: {},
+  reducers: {
+    changeZakaz: (state, action) => {
+      state.zakaz = action.payload;
+    },
+    clearZakaz: (state, action) => {
+      state.zakaz = {
+        zakaz_summ: 0,
+        zakaz_comment: "",
+        client_fio: "",
+        client_phone: "",
+        zakaz_date: "",
+        address_from: "",
+        address_to: "",
+        summ_chek: "",
+      };
+    },
+  },
 });
-export const { changeTypeSecretarDela } = requestSlice.actions;
+export const { changeZakaz, clearZakaz } = requestSlice.actions;
 
 export default requestSlice.reducer;

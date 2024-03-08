@@ -52,8 +52,7 @@ const MainContent = () => {
     );
   };
 
-  console.log(listPrice, "listPrice");
-
+  // console.log(listPrice, "listPrice");
   return (
     <div className="maincontent">
       <div className="container">

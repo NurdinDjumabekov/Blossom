@@ -3,23 +3,25 @@ import "./Header.scss";
 import logo from "../../assets/images/LogoBlossom.png";
 import inst from "../../assets/icons/insta.svg";
 import wa from "../../assets/icons/wa.svg";
-import wa1 from "../../assets/icons/search.svg";
 import { numWebSite } from "../../helpers/dataArr";
 import { NavLink } from "react-router-dom";
 import favorite from "../../assets/icons/heartBlack.svg";
 import basket from "../../assets/icons/basket.svg";
-import account from "../../assets/icons/account.svg";
 import { useSelector } from "react-redux";
 
 const Header = () => {
   const { listfavorites } = useSelector((state) => state.saveDataSlice);
+
+  const mainClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="header">
       <div className="container">
         <div className="header__inner">
           <div className="main">
-            <NavLink to={"/"} className="logo">
+            <NavLink to={"/"} className="logo" onClick={mainClick}>
               <img src={logo} alt="Logo" />
             </NavLink>
             <p>Доставка цветов, шаров и подарков в Бишкеке</p>

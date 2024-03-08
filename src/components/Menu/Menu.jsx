@@ -7,6 +7,7 @@ const Menu = () => {
   const navigate = useNavigate();
   const clickCategory = (obj) => {
     navigate(obj?.link);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   /// /other/10438/Клубника
   return (

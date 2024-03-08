@@ -5,6 +5,7 @@ import trava from "../../assets/images/trava.png";
 import baby from "../../assets/images/imgHeader.webp";
 import love from "../../assets/images/love.webp";
 import more from "../../assets/images/moreTovar.webp";
+import PayOneClick from "../PayOneClick/PayOneClick";
 
 const Advertising = () => {
   const [look, setLook] = React.useState(false);
@@ -40,14 +41,7 @@ const Advertising = () => {
             </p>
             <div className="actionSend">
               <button onClick={() => setLook(true)}>СДЕЛАТЬ ПРЕДЗАКАЗ </button>
-              {look && (
-                <form className="sendZakaz" onSubmit={payOneClick}>
-                  <h5>Купить в 1 клик</h5>
-                  <p>Менеджер свяжется с вами в течение 3 минут</p>
-                  <input type="text" placeholder="+996(___)__-__-__" />
-                  <button type="submit">Купить в один клик</button>
-                </form>
-              )}
+              {look && <PayOneClick setLook={setLook} look={look} />}
             </div>
           </div>
           <div className="oprosnik">

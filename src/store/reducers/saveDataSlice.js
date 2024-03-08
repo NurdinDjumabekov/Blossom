@@ -58,6 +58,10 @@ const saveDataSlice = createSlice({
         (obj) => obj.codeid !== codeid
       );
     },
+    //// для очистки
+    clearBasket: (state, action) => {
+      state.listBasket = [];
+    },
   },
 });
 
@@ -67,6 +71,7 @@ export const {
   addListBasket,
   delListBasket,
   delEveryBasket,
+  clearBasket,
 } = saveDataSlice.actions;
 
 export default saveDataSlice.reducer;

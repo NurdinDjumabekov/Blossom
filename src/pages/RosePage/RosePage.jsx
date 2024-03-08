@@ -26,7 +26,9 @@ const RosePage = () => {
     dispatch(getRoseSort());
     window.scrollTo(0, 0);
   }, []);
-  
+
+  // console.log(listSortRose, "listSortRose");
+
   return (
     <div className="rosePage">
       <div className="container">

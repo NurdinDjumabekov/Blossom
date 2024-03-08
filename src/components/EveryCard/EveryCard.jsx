@@ -9,10 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addListBasket,
   changeFavorites,
-  changeListBasket,
 } from "../../store/reducers/saveDataSlice";
 import { useNavigate } from "react-router-dom";
 import { imgParse } from "../../helpers/imgParse";
+import { changeAlertText } from "../../store/reducers/stateSlice";
+import PayOneClick from "../PayOneClick/PayOneClick";
 
 const EveryCard = ({ content }) => {
   const dispatch = useDispatch();
@@ -21,21 +22,6 @@ const EveryCard = ({ content }) => {
   const { listfavorites, listBasket } = useSelector(
     (state) => state.saveDataSlice
   );
-
-  React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      // Если клик был вне формы, то скрываем ее
-      if (look && !event.target.closest(".sendZakaz")) {
-        setLook(false);
-      }
-    };
-    // Добавляем слушатель при монтировании компонента
-    document.addEventListener("mousedown", handleClickOutside);
-    // Очищаем слушатель при размонтировании компонента
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [look]);
 
   const deleteCard = (id) => {
     const updatedFavorites = listfavorites.filter((item) => item.codeid !== id);
@@ -49,10 +35,13 @@ const EveryCard = ({ content }) => {
   const addCardBasket = () => {
     dispatch(addListBasket(content));
     navigate("/basket");
-  };
-
-  const payOneClick = () => {
-    setLook(true);
+    dispatch(
+      changeAlertText({
+        text: "Товар был добавлен в корзину",
+        backColor: "#c14e77",
+        state: true,
+      })
+    );
   };
 
   const clickDetailed = () => {
@@ -108,15 +97,7 @@ const EveryCard = ({ content }) => {
           <button onClick={addCardBasket}>В корзину</button>
         </div>
       </div>
-
-      {look && (
-        <form className="sendZakaz" onSubmit={payOneClick}>
-          <h5>Купить в 1 клик</h5>
-          <p>Менеджер свяжется с вами в течение 3 минут</p>
-          <input type="text" placeholder="+996(___)__-__-__" />
-          <button type="submit">Купить в один клик</button>
-        </form>
-      )}
+      {look && <PayOneClick setLook={setLook} content={content} look={look} />}
     </div>
   );
 };
