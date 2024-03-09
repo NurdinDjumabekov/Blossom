@@ -83,6 +83,7 @@
         display: flex;
         align-items: center;
         gap: 30px;
+        position: relative;
         > button {
           cursor: pointer;
           height: 55px;
@@ -100,7 +101,7 @@
             color: #c14e77;
           }
         }
-        > button:nth-child(1) {
+        > button:nth-child(2) {
           background: transparent;
           color: #c14e77;
           &:hover {

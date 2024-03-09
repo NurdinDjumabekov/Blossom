@@ -63,7 +63,7 @@ const MainContent = () => {
           {lookPrice && (
             <div className="priceSort">
               {listPrice?.slice(1, 6)?.map((price) => (
-                <div className="priceSort__shadow">
+                <div className="priceSort__shadow" key={price?.id}>
                   <div
                     className={`priceSort__every ${
                       price.active ? "activePrice" : ""

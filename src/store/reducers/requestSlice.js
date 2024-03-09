@@ -264,10 +264,10 @@ const initialState = {
     zakaz_comment: "",
     client_fio: "",
     client_phone: "",
-    zakaz_date: "",
     address_from: "",
     address_to: "",
     summ_chek: "",
+    type_pay: 1,
   },
 };
 
@@ -418,7 +418,6 @@ const requestSlice = createSlice({
         zakaz_comment: "",
         client_fio: "",
         client_phone: "",
-        zakaz_date: "",
         address_from: "",
         address_to: "",
         summ_chek: "",

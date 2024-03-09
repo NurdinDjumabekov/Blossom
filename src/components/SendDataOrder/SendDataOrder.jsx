@@ -14,6 +14,8 @@ const SendDataOrder = () => {
   const { zakaz } = useSelector((state) => state.requestSlice);
   const [one, setOne] = useState(0);
   const [two, setTwo] = useState(0);
+  console.log(listBasket, "listBasket");
+
   const sendData = (e) => {
     e.preventDefault();
     if (listBasket?.length === 0) {
@@ -27,14 +29,8 @@ const SendDataOrder = () => {
     } else {
       dispatch(
         createZakaz({
-          zakaz_summ: 0,
-          zakaz_comment: "",
-          client_fio: "",
-          client_phone: "",
-          zakaz_date: "",
-          address_from: "",
-          address_to: "",
-          summ_chek: "",
+          ...zakaz,
+          list: listBasket,
         })
       );
       dispatch(
@@ -56,7 +52,11 @@ const SendDataOrder = () => {
       dispatch(changeZakaz({ ...zakaz, [e.target.name]: e.target.value }));
     }
   };
-  // console.log(zakaz, "zakaz");
+  console.log(zakaz, "zakaz");
+
+  const clickPay = (type) => {
+    dispatch(changeZakaz({ ...zakaz, type_pay: type }));
+  };
 
   return (
     <div className="sendData">
@@ -86,15 +86,28 @@ const SendDataOrder = () => {
             />
           </label>
         </div>
-        <h5>Доставка</h5>
-        <div className="choice">
-          <div className="choice__inner" onClick={() => setOne(0)}>
-            <div>{one === 0 && <img src={good} alt="" />}</div>
-            <p>Самовывоз</p>
+        <div className="types">
+          <div className="choice">
+            <h5>Доставка</h5>
+            <div className="choice__inner" onClick={() => setOne(0)}>
+              <div>{one === 0 && <img src={good} alt="" />}</div>
+              <p>Самовывоз</p>
+            </div>
+            <div className="choice__inner" onClick={() => setOne(1)}>
+              <div>{one === 1 && <img src={good} alt="" />}</div>
+              <p>Доставка</p>
+            </div>
           </div>
-          <div className="choice__inner" onClick={() => setOne(1)}>
-            <div>{one === 1 && <img src={good} alt="" />}</div>
-            <p>Доставка</p>
+          <div className="choice">
+            <h5>Тип оплаты</h5>
+            <div className="choice__inner" onClick={() => clickPay(1)}>
+              <div>{zakaz?.type_pay === 1 && <img src={good} alt="" />}</div>
+              <p>Наличными</p>
+            </div>
+            <div className="choice__inner" onClick={() => clickPay(2)}>
+              <div>{zakaz?.type_pay === 2 && <img src={good} alt="" />}</div>
+              <p>Картой</p>
+            </div>
           </div>
         </div>
         {one === 1 && (
@@ -110,19 +123,9 @@ const SendDataOrder = () => {
                 value={zakaz.address_to}
               />
             </label>
-            {/* <h5>Адрес доставки (cвяжемся для уточнения)</h5>
-            <div className="choice">
-              <div className="choice__inner" onClick={() => setTwo(0)}>
-                <div>{two === 0 && <img src={good} alt="" />}</div>
-                <p>Узнать у получателя</p>
-              </div>
-              <div className="choice__inner" onClick={() => setTwo(1)}>
-                <div>{two === 1 && <img src={good} alt="" />}</div>
-                <p>Знаю адрес</p>
-              </div>
-            </div> */}
           </>
         )}
+
         <label>
           <b>Добавить комментарий</b>
           <input
